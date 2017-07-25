@@ -8,7 +8,8 @@ import {
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import Login from './Login';
-import TabPage from './rn/TabPage'
+import TabPage from './TabPage'
+import ListViewPage from './ListViewPage'
 
 class RNApp extends Component {
   static navigationOptions = {
@@ -22,6 +23,7 @@ class RNApp extends Component {
       <View style={styles.container}>
         <Button onPress={() => navigate('Login')} title='去登录' />
         <Button onPress={() => navigate('TabPage')} title='Tab' />
+        <Button onPress={() => navigate('ListViewPage')} title='ListView' />
       </View>
     );
   }
@@ -43,7 +45,8 @@ const styles = StyleSheet.create({
 const MyApp = StackNavigator({
   RNApp: { screen: RNApp },
   Login: { screen: Login },
-  TabPage: { screen: TabPage }
+  TabPage: { screen: TabPage },
+  ListViewPage: { screen: ListViewPage }
 });
 
 export default MyApp;
