@@ -1,15 +1,16 @@
 
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   StyleSheet,
   Text,
   View,
   Button
-} from 'react-native';
-import { StackNavigator } from 'react-navigation';
-import Login from './Login';
+} from 'react-native'
+import { StackNavigator } from 'react-navigation'
+import Login from './Login'
 import TabPage from './TabPage'
-import ListViewPage from './ListViewPage'
+import FlatListViewPage from './FlatListViewPage'
+import FlatListViewWebViewPage from './FlatListViewWebViewPage'
 
 class RNApp extends Component {
   static navigationOptions = {
@@ -23,7 +24,8 @@ class RNApp extends Component {
       <View style={styles.container}>
         <Button onPress={() => navigate('Login')} title='去登录' />
         <Button onPress={() => navigate('TabPage')} title='Tab' />
-        <Button onPress={() => navigate('ListViewPage')} title='ListView' />
+        <Button onPress={() => navigate('FlatListViewPage')} title='FlatListView' />
+        <Button onPress={() => navigate('FlatListViewWebViewPage')} title='FlatListView + WebView' />
       </View>
     );
   }
@@ -46,7 +48,8 @@ const MyApp = StackNavigator({
   RNApp: { screen: RNApp },
   Login: { screen: Login },
   TabPage: { screen: TabPage },
-  ListViewPage: { screen: ListViewPage }
+  FlatListViewPage: { screen: FlatListViewPage },
+  FlatListViewWebViewPage: { screen: FlatListViewWebViewPage }
 });
 
 export default MyApp;

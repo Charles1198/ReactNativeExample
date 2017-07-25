@@ -10,7 +10,7 @@ import {
   Alert
 } from 'react-native';
 
-export default class Login extends Component {
+export default class FlatListViewPage extends Component {
   constructor(porps) {
     super(porps);
   }
@@ -22,7 +22,7 @@ export default class Login extends Component {
   //item
   renderItem = (item) => {
     var text = '第' + (item.index + 1) + '个'
-    return <Text style={{ flex: 1, height: 60, textAlign: 'center' }} onPress={() => { Alert.alert('press item ' + (item.index + 1))}}>{text}</Text>
+    return <Text style={{ flex: 1, height: 60, textAlign: 'center' }} onPress={() => { Alert.alert('press item ' + (item.index + 1)) }}>{text}</Text>
   }
 
   //分割线
