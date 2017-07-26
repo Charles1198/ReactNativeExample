@@ -10,7 +10,7 @@ import {
   Alert
 } from 'react-native';
 
-export default class FlatListViewPage extends Component {
+export default class FlatListPage extends Component {
   constructor(porps) {
     super(porps);
   }

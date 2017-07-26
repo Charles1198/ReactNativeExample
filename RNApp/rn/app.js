@@ -9,8 +9,9 @@ import {
 import { StackNavigator } from 'react-navigation'
 import Login from './Login'
 import TabPage from './TabPage'
-import FlatListViewPage from './FlatListViewPage'
-import FlatListViewWebViewPage from './FlatListViewWebViewPage'
+import FlatListPage from './FlatListPage'
+import FlatListWebViewPage from './FlatListWebViewPage'
+import CameraPage from './CameraPage'
 
 class RNApp extends Component {
   static navigationOptions = {
@@ -22,10 +23,21 @@ class RNApp extends Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        <Button onPress={() => navigate('Login')} title='去登录' />
-        <Button onPress={() => navigate('TabPage')} title='Tab' />
-        <Button onPress={() => navigate('FlatListViewPage')} title='FlatListView' />
-        <Button onPress={() => navigate('FlatListViewWebViewPage')} title='FlatListView + WebView' />
+        <View style={{ margin: 5 }}>
+          <Button style={styles.button} onPress={() => navigate('Login')} title='去登录' />
+        </View>
+        <View style={{ margin: 5 }}>
+          <Button style={styles.button} onPress={() => navigate('TabPage')} title='Tab' />
+        </View>
+        <View style={{ margin: 5 }}>
+          <Button style={styles.button} onPress={() => navigate('CameraPage')} title='Camera' />
+        </View>
+        <View style={{ margin: 5 }}>
+          <Button style={styles.button} onPress={() => navigate('FlatListPage')} title='FlatList' />
+        </View>
+        <View style={{ margin: 5 }}>
+          <Button style={styles.button} onPress={() => navigate('FlatListWebViewPage')} title='FlatList + WebView' />
+        </View>
       </View>
     );
   }
@@ -33,14 +45,13 @@ class RNApp extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    marginTop: 20,
+    flexWrap: 'wrap',
+    marginTop: 5,
+    flexDirection: 'row',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
+  button: {
     margin: 10,
+    height: 40
   }
 });
 
@@ -48,8 +59,9 @@ const MyApp = StackNavigator({
   RNApp: { screen: RNApp },
   Login: { screen: Login },
   TabPage: { screen: TabPage },
-  FlatListViewPage: { screen: FlatListViewPage },
-  FlatListViewWebViewPage: { screen: FlatListViewWebViewPage }
+  FlatListPage: { screen: FlatListPage },
+  FlatListWebViewPage: { screen: FlatListWebViewPage },
+  CameraPage: { screen: CameraPage }
 });
 
 export default MyApp;
