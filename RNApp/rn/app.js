@@ -12,6 +12,7 @@ import TabPage from './TabPage'
 import FlatListPage from './FlatListPage'
 import FlatListWebViewPage from './FlatListWebViewPage'
 import CameraPage from './CameraPage'
+import Animation from './Animation'
 
 class RNApp extends Component {
   static navigationOptions = {
@@ -38,6 +39,9 @@ class RNApp extends Component {
         <View style={{ margin: 5 }}>
           <Button style={styles.button} onPress={() => navigate('FlatListWebViewPage')} title='FlatList + WebView' />
         </View>
+        <View style={{ margin: 5 }}>
+          <Button style={styles.button} onPress={() => navigate('Animation')} title='Animation' />
+        </View>
       </View>
     );
   }
@@ -61,7 +65,8 @@ const MyApp = StackNavigator({
   TabPage: { screen: TabPage },
   FlatListPage: { screen: FlatListPage },
   FlatListWebViewPage: { screen: FlatListWebViewPage },
-  CameraPage: { screen: CameraPage }
+  CameraPage: { screen: CameraPage },
+  Animation: { screen: Animation }
 });
 
 export default MyApp;
