@@ -34,9 +34,9 @@ export default class FlatListWebViewPage extends Component {
     // if (Platform.OS == 'android') {
     //   return <WebView source={{ html: text }} />
     // } else {
-      return <AutoHeightWebView source={{ html: text }} />
+    return <AutoHeightWebView source={{ html: text }} />
     // }
-    
+
   }
 
   //分割线
