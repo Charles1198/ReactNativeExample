@@ -6,7 +6,6 @@ import {
   StyleSheet,
   View,
   Image,
-  Text,
   Button,
   Animated,
   Easing
@@ -24,26 +23,26 @@ export default class Animation extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // bounceValue: new Animated.Value(1),//缩放
-      // rotateValue: new Animated.Value(0),//旋转
-      // translateValue: new Animated.Value({ x: 0, y: 0 }),//平移
-      // fadeOutOpacity: new Animated.Value(1)//透明度
-      scaleValue: new Animated.Value(1),//缩放
-      rotateValue: new Animated.Value(0),//旋转
-      translateValue: new Animated.ValueXY({ x: 0, y: 0 }),//平移
-      fadeOutOpacity: new Animated.Value(1),//透明度
-      translatePeaValue: new Animated.ValueXY({ x: 0, y: 0 }),//平移
+      scaleValue: new Animated.Value(1),// 缩放
+      rotateValue: new Animated.Value(0),// 旋转
+      translateValue: new Animated.ValueXY({ x: 0, y: 0 }),// 平移
+      fadeOutOpacity: new Animated.Value(1),// 透明度
+
+      translatePeaValue: new Animated.ValueXY({ x: 0, y: 0 }),// 平移
+      fadeOutPeaOpacity: new Animated.Value(0),// 透明度
+
+      stopAnim: true
     };
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <View style={{ flex: 2, backgroundColor: 'white' }}>
+        <View style={{ flex: 2, flexDirection: 'row', backgroundColor: 'white' }}>
           <Animated.Image
             source={bean}
             style={{
-              height: 100, width: 100, alignSelf: 'center', marginTop: 50,
+              height: 100, width: 100, alignSelf: 'center',
               opacity: this.state.fadeOutOpacity,
               transform: [
                 { translateX: this.state.translateValue.x }, // x轴移动
@@ -52,21 +51,23 @@ export default class Animation extends Component {
                 { rotate: this.state.rotateValue.interpolate({ inputRange: [0, 360], outputRange: ['0deg', '360deg'] }) }
               ]
             }}
-          >
-            <Animated.Image
-              source={pea}
-              style={{
-                height: 25, width: 25, alignSelf: 'center', marginTop: 50,
-                transform: [
-                  { translateX: this.state.translatePeaValue.x } // x轴移动
-                ]
-              }}
-            />
-          </Animated.Image>
+          />
+          <Animated.Image
+            source={pea}
+            style={{
+              height: 25, width: 25, alignSelf: 'center',
+              opacity: this.state.fadeOutPeaOpacity,
+              transform: [
+                { translateX: this.state.translatePeaValue.x }, // x轴移动
+              ]
+            }}
+          />
         </View>
         <View style={{ flexDirection: 'row' }}>
-          <Button style={{ margin: 5 }} onPress={() => this.reset()} title='还原' />
-        </View>Í
+          <View style={{ margin: 5 }}>
+            <Button onPress={() => this.reset()} title='还原' />
+          </View>
+        </View>
         <View style={{ flexDirection: 'row' }}>
           <View style={{ margin: 5 }}>
             <Button onPress={() => this.scaleAnim()} title='缩放' />
@@ -89,11 +90,21 @@ export default class Animation extends Component {
             <Button onPress={() => this.animParallel()} title='组合-同时执行' />
           </View>
         </View>
+        <View style={{ flexDirection: 'row' }}>
+          <View style={{ margin: 5 }}>
+            <Button onPress={() => {
+              this.state.fadeOutPeaOpacity.setValue(1);
+              this.reset()
+              this.state.stopAnim = !this.state.stopAnim
+              this.animPea()
+            }} title='豌豆射手' />
+          </View>
+        </View>
       </View>
-    );
+    )
   }
 
-  //回到初始状态
+  // 回到初始状态
   reset() {
     this.state.scaleValue.setValue(1);
     this.state.rotateValue.setValue(0);
@@ -102,7 +113,7 @@ export default class Animation extends Component {
     this.state.translatePeaValue.setValue({ x: 0, y: 0 });
   }
 
-  //缩放动画
+  // 缩放动画
   scaleAnim() {
     this.reset()
     this.state.scaleValue.setValue(1);
@@ -112,7 +123,7 @@ export default class Animation extends Component {
     }).start()
   }
 
-  //旋转动画
+  // 旋转动画
   rotateAnim() {
     this.reset()
     this.state.rotateValue.setValue(0);
@@ -122,7 +133,7 @@ export default class Animation extends Component {
     }).start()
   }
 
-  //平移动画
+  // 平移动画
   translateAnim() {
     this.reset()
     this.state.translateValue.setValue({ x: 0, y: 0 });
@@ -132,7 +143,7 @@ export default class Animation extends Component {
     }).start()
   }
 
-  //透明度动画
+  // 透明度动画
   fadeOutAnim() {
     this.reset()
     this.state.fadeOutOpacity.setValue(1);
@@ -142,7 +153,7 @@ export default class Animation extends Component {
     }).start()
   }
 
-  //顺序执行
+  // 顺序执行
   animSequence() {
     this.reset()
     Animated.sequence([
@@ -165,7 +176,7 @@ export default class Animation extends Component {
     ]).start()
   }
 
-  //同时执行
+  // 同时执行
   animParallel() {
     this.reset()
     Animated.parallel([
@@ -186,6 +197,29 @@ export default class Animation extends Component {
         duration: 1000
       })
     ]).start()
+  }
+
+  // 吐豆豆
+  animPea() {
+    if (this.state.stopAnim) {
+      return
+    }
+
+    this.state.translatePeaValue.setValue({ x: 0, y: 0 });
+    Animated.timing(this.state.translatePeaValue, {
+      toValue: { x: 300, y: 0 },
+      duration: 1000
+    }).start(() => {
+      this.animPea()
+    })
+
+    this.state.scaleValue.setValue(1);
+    Animated.timing(this.state.scaleValue, {
+      toValue: 1.1,
+      duration: 100
+    }).start(() => {
+      this.state.scaleValue.setValue(1);
+    })
   }
 }
 

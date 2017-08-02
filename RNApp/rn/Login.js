@@ -33,6 +33,7 @@ export default class Login extends Component {
         <View style={styles.viewDirectionRow}>
           <Text style={styles.textTitle}>用户名:</Text>
           <TextInput
+            keyboardType='phone-pad'
             style={styles.input}
             onChangeText={(username) => this.setState({ username })}
             value={this.state.text}
@@ -41,6 +42,8 @@ export default class Login extends Component {
         <View style={styles.viewDirectionRow}>
           <Text style={styles.textTitle}>密码:</Text>
           <TextInput
+            keyboardType='name-phone-pad'
+            secureTextEntry={true}
             style={styles.input}
             onChangeText={(password) => this.setState({ password })}
             value={this.state.password}
@@ -49,17 +52,71 @@ export default class Login extends Component {
         <Button
           style={styles.button}
           title='登录'
-          onPress={() => {
-            
-          }}
+          onPress={() => this.toLogin()}
         />
         <ActivityIndicator
           animating={this.state.animating}
           style={[styles.centering, { height: 80 }]}
-          size="large"
+          size='large'
         />
       </View>
     );
+  }
+
+  toLogin() {
+    this.state.animating = true
+    // fetch('https://facebook.github.io/react-native/movies.json')
+    //   .then((response) => response.json())
+    //   .then((responseJson) => {
+    //     this.state.animating = false
+    //     console.log(responseJson.movies)
+    //   })
+    //   .catch((error) => {
+    //     this.state.animating = false
+    //     console.error(error);
+    //   });
+    if (this.state.username == '') {
+      Alert.alert('请输入用户名')
+      return
+    }
+
+    if (this.state.password == '') {
+      Alert.alert('请输入密码')
+      return
+    }
+
+    if (this.state.password != '11111111') {
+      Alert.alert('密码错误')
+      return
+    }
+
+    this.state.animating = true
+    url = 'https://api-math-examination.bqteam.com/user/authentication'
+
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: 'login_key=' + this.state.username + '&password=mHdLVJ06deWfqr5WuM00Bw=='
+    })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        this.state.animating = false
+        console.log(responseJson)
+        console.log('statud_code:' + responseJson.status_code)
+        
+        code = responseJson.status_code
+        if (code == '200') {
+          Alert.alert('登录成功')
+        } else {
+          Alert.alert(responseJson.message)
+        }
+      })
+      .catch((error) => {
+        this.state.animating = false
+        console.error(error);
+      });
   }
 }
 
