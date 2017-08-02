@@ -1,6 +1,7 @@
 # 第一个 React Native 例子
 
 这是主页
+
 <img src="https://github.com/Charles1198/ReactNativeExample/blob/master/image/android_main.png" width="200"/>
 <img src="https://github.com/Charles1198/ReactNativeExample/blob/master/image/ios_main.PNG" width="200"/>
 
