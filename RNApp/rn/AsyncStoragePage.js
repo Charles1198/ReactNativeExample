@@ -29,7 +29,7 @@ export default class AsyncStoragePage extends Component {
   render() {
     return (
       <View >
-        <View style={{ height: 40, flexDirection: 'row' ,alignContent: 'center'}}>
+        <View style={{ height: 40, flexDirection: 'row', alignContent: 'center' }}>
           <Text>key</Text>
           <TextInput
             style={{ width: 100, fontSize: 20 }}
@@ -58,9 +58,6 @@ export default class AsyncStoragePage extends Component {
           </View>
           <View style={{ margin: 5 }}>
             <Button style={styles.button} onPress={() => this.clear()} title='清空' />
-          </View>
-          <View style={{ margin: 5 }}>
-            <Button style={styles.button} onPress={() => this.selectAll()} title='查询所有' />
           </View>
         </View>
         <Text>{this.state.result}</Text>
@@ -163,27 +160,6 @@ export default class AsyncStoragePage extends Component {
         Alert.alert('清空成功')
       } else {
         Alert.alert('清空失败')
-      }
-    })
-  }
-
-  selectAll() {
-    AsyncStorage.getAllKeys((error, keys) => {
-
-      var all = ''
-      for (var i = 0; i < keys.length; i++) {
-        var key = keys[i];
-        if (key == this.state.key) {
-          AsyncStorage.getItem(key, (error, result) => {
-            if (!error) {
-              all = all + 'key:' + this.state.key + ', value:' + result + "\n"
-            } else {
-              all = all + 'key:' + this.state.key + ', value:noValue\n'
-            }
-
-            this.setState({ result: all })
-          })   
-        }
       }
     })
   }
