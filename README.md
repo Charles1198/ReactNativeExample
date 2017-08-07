@@ -3,8 +3,8 @@
 这是主页
 
 <figure class="half">
-<img src="https://github.com/Charles1198/ReactNativeExample/blob/master/image/android_main.png" width="200"/>
-<img src="https://github.com/Charles1198/ReactNativeExample/blob/master/image/ios_main.PNG" width="200"/>
+<img src="https://github.com/Charles1198/ReactNativeExample/blob/master/image/android_main.png" width="200">
+<img src="https://github.com/Charles1198/ReactNativeExample/blob/master/image/ios_main.PNG" width="200">
   </figure>
 
 登录页面，学习网络连接
