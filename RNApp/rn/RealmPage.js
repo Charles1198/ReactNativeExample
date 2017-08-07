@@ -11,56 +11,43 @@ import {
   TextInput,
   Button
 } from 'react-native';
+//使用第三方库 Realm，导入方式：
+//npm install --save realm
+//react-native link realm
+import Realm from 'realm';
 
-export default class AsyncStoragePage extends Component {
+const CarSchema = {
+  name: 'Car',
+  properties: {
+    make: 'string',
+    model: 'string',
+  }
+};
+
+export default class RealmPage extends Component {
   constructor(porps) {
     super(porps);
     this.state = {
-      key: '',
-      value: '',
-      result: 'kjuyfgtuy'
+      
     }
   }
 
   static navigationOptions = {
-    title: '增删改查'
+    title: 'Realm 数据库'
   };
 
+
   render() {
+    
+    let realm = new Realm({ schema: [CarSchema] })
+    realm.write(() => {
+      realm.create('Car', {make:'BMW', model:'X1'})
+    })
+    
     return (
-      <View >
-        <View style={{ height: 40, flexDirection: 'row', alignContent: 'center' }}>
-          <Text>key</Text>
-          <TextInput
-            style={{ width: 100, fontSize: 20 }}
-            onChangeText={(key) => this.setState({ key })}
-            value={this.state.key}
-          />
-          <Text>value</Text>
-          <TextInput
-            style={{ width: 100, fontSize: 20 }}
-            onChangeText={(value) => this.setState({ value })}
-            value={this.state.value}
-          />
-        </View>
-        <View style={{ height: 40, flexDirection: 'row' }}>
-          <View style={{ margin: 5 }}>
-            <Button style={styles.button} onPress={() => this.add()} title='增加' />
-          </View>
-          <View style={{ margin: 5 }}>
-            <Button style={styles.button} onPress={() => this.delete()} title='删除' />
-          </View>
-          <View style={{ margin: 5 }}>
-            <Button style={styles.button} onPress={() => this.modify()} title='修改' />
-          </View>
-          <View style={{ margin: 5 }}>
-            <Button style={styles.button} onPress={() => this.select()} title='查询' />
-          </View>
-          <View style={{ margin: 5 }}>
-            <Button style={styles.button} onPress={() => this.clear()} title='清空' />
-          </View>
-        </View>
-      </View>
+      <View>
+        <Text>Count of cars in Realm:{realm.objects('Car').length}</Text>
+      </View >
     );
   }
 

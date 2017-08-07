@@ -14,6 +14,8 @@ import FlatListWebViewPage from './FlatListWebViewPage'
 import CameraPage from './CameraPage'
 import Animation from './Animation'
 import AsyncStoragePage from './AsyncStoragePage'
+import RealmPage from './RealmPage'
+import PickImagePage from './PickImagePage'
 
 class RNApp extends Component {
   static navigationOptions = {
@@ -32,7 +34,7 @@ class RNApp extends Component {
           <Button style={styles.button} onPress={() => navigate('TabPage')} title='Tab' />
         </View>
         <View style={{ margin: 5 }}>
-          <Button style={styles.button} onPress={() => navigate('CameraPage')} title='Camera' />
+          <Button style={styles.button} onPress={() => navigate('CameraPage', { isBack: true })} title='Camera' />
         </View>
         <View style={{ margin: 5 }}>
           <Button style={styles.button} onPress={() => navigate('FlatListPage')} title='FlatList' />
@@ -45,6 +47,12 @@ class RNApp extends Component {
         </View>
         <View style={{ margin: 5 }}>
           <Button style={styles.button} onPress={() => navigate('AsyncStoragePage')} title='AsyncStorage' />
+        </View>
+        <View style={{ margin: 5 }}>
+          <Button style={styles.button} onPress={() => navigate('RealmPage')} title='Realm' />
+        </View>
+        <View style={{ margin: 5 }}>
+          <Button style={styles.button} onPress={() => navigate('PickImagePage')} title='PickImage' />
         </View>
       </View>
     );
@@ -71,7 +79,9 @@ const MyApp = StackNavigator({
   FlatListWebViewPage: { screen: FlatListWebViewPage },
   CameraPage: { screen: CameraPage },
   Animation: { screen: Animation },
-  AsyncStoragePage: { screen: AsyncStoragePage }
+  AsyncStoragePage: { screen: AsyncStoragePage },
+  RealmPage: { screen: RealmPage },
+  PickImagePage: { screen: PickImagePage }
 });
 
 export default MyApp;

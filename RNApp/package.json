@@ -11,7 +11,9 @@
     "react-native": "0.44.3",
     "react-native-autoheight-webview": "^0.2.5",
     "react-native-camera": "git+https://github.com/lwansbrough/react-native-camera.git",
-    "react-navigation": "^1.0.0-beta.11"
+    "react-native-image-crop-picker": "^0.14.4",
+    "react-navigation": "^1.0.0-beta.11",
+    "realm": "^1.10.1"
   },
   "devDependencies": {
     "babel-jest": "20.0.3",

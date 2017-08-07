@@ -3,6 +3,8 @@ package com.rnapp;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactnative.ivpusic.imagepicker.PickerPackage;
+import io.realm.react.RealmReactPackage;
 import com.dscj.autoheightwebview.AutoHeightWebViewPackage;
 import com.lwansbrough.RCTCamera.RCTCameraPackage;
 import com.facebook.react.ReactNativeHost;
@@ -25,6 +27,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new PickerPackage(),
+            new RealmReactPackage(),
             new AutoHeightWebViewPackage(),
             new RCTCameraPackage()
       );

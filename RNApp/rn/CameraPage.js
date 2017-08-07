@@ -9,6 +9,7 @@ import {
   Button,
   Alert
 } from 'react-native';
+import { StackNavigator } from 'react-navigation'
 //使用第三方库 react-native-camera，导入方式：
 //npm install react- native - camera@https://github.com/lwansbrough/react-native-camera.git --save
 //react - native link react- native - camera
@@ -26,6 +27,8 @@ export default class CameraPage extends Component {
       cameraType: Camera.constants.Type.back
     };
   }
+
+
 
   render() {
     return (
@@ -50,7 +53,6 @@ export default class CameraPage extends Component {
 
   takePicture() {
     const options = {};
-    //options.location = ...
     this.camera.capture({ metadata: options })
       .then((data) => Alert.alert("拍照成功！图片保存地址：\n" + data.path))
       .catch(err => console.error(err));
