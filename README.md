@@ -35,3 +35,18 @@ Animation 页面，学习动画
 <img src="https://github.com/Charles1198/ReactNativeExample/blob/master/image/android_animation.png" width="200"/>
 <img src="https://github.com/Charles1198/ReactNativeExample/blob/master/image/ios_animation.PNG" width="200"/>
 
+AsyncStorage 页面，学习使用 AsyncStorage 进行数据持久化，相当于 android 里的 SharedPreference 和 iOS 里的 UserDefaults
+
+<img src="https://github.com/Charles1198/ReactNativeExample/blob/master/image/android_AsyncStorage.png" width="200"/>
+<img src="https://github.com/Charles1198/ReactNativeExample/blob/master/image/ios_AsyncStorage.PNG" width="200"/>
+
+Realm 页面，学习使用 Realm in RN
+
+<img src="https://github.com/Charles1198/ReactNativeExample/blob/master/image/android_realm.png" width="200"/>
+<img src="https://github.com/Charles1198/ReactNativeExample/blob/master/image/ios_realm.PNG" width="200"/>
+
+PickImage 页面，学习使用图片选择库
+
+<img src="https://github.com/Charles1198/ReactNativeExample/blob/master/image/android_imagePicker.png" width="200"/>
+<img src="https://github.com/Charles1198/ReactNativeExample/blob/master/image/ios_imagePicker.PNG" width="200"/>
+
