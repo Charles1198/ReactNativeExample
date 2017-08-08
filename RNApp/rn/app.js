@@ -16,6 +16,7 @@ import Animation from './Animation'
 import AsyncStoragePage from './AsyncStoragePage'
 import RealmPage from './RealmPage'
 import PickImagePage from './PickImagePage'
+import FlexBoxPage from './FlexBoxPage'
 
 class RNApp extends Component {
   static navigationOptions = {
@@ -29,6 +30,9 @@ class RNApp extends Component {
       <View style={styles.container}>
         <View style={{ margin: 5 }}>
           <Button style={styles.button} onPress={() => navigate('Login')} title='去登录' />
+        </View>
+        <View style={{ margin: 5 }}>
+          <Button style={styles.button} onPress={() => navigate('FlexBoxPage')} title='FlexBox' />
         </View>
         <View style={{ margin: 5 }}>
           <Button style={styles.button} onPress={() => navigate('TabPage')} title='Tab' />
@@ -81,7 +85,8 @@ const MyApp = StackNavigator({
   Animation: { screen: Animation },
   AsyncStoragePage: { screen: AsyncStoragePage },
   RealmPage: { screen: RealmPage },
-  PickImagePage: { screen: PickImagePage }
+  PickImagePage: { screen: PickImagePage },
+  FlexBoxPage: { screen: FlexBoxPage }
 });
 
 export default MyApp;
