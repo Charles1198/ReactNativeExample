@@ -78,7 +78,7 @@ export default class SectionListPage extends Component {
           style={{ flex: 1 }}
           renderSectionHeader={this.sectionHeader}
           renderItem={this.renderItem}
-          separator={this.separator}
+          ItemSeparatorComponent={this.separator}
           sections={[
             { key: 1, data: [{ key: '1' }, { key: '2' }, { key: '3' }, { key: '4' }] },
             { key: 2, data: [{ key: '1' }, { key: '2' }, { key: '3' }, { key: '4' }] },
@@ -90,7 +90,7 @@ export default class SectionListPage extends Component {
           style={{ flex: 1 }}
           renderSectionHeader={this.sectionHeader}
           renderItem={this.renderItem}
-          separator={this.separator}
+          ItemSeparatorComponent={this.separator}
           sections={[
             { renderItem: this.renderItem1, key: 1, data: [{ key: '1' }, { key: '2' }, { key: '3' }, { key: '4' }] },
             { renderItem: this.renderItem2, key: 2, data: [{ key: '1' }, { key: '2' }, { key: '3' }, { key: '4' }] },
@@ -101,11 +101,3 @@ export default class SectionListPage extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center'
-  }
-});
-
