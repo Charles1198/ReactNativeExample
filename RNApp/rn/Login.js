@@ -105,7 +105,7 @@ export default class Login extends Component {
         this.state.animating = false
         console.log(responseJson)
         console.log('statud_code:' + responseJson.status_code)
-        
+
         code = responseJson.status_code
         if (code == '200') {
           Alert.alert('登录成功')

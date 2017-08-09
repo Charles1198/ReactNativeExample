@@ -7,12 +7,18 @@ import {
   View,
   Text,
   FlatList,
-  Alert
+  Alert,
+  ActivityIndicator
 } from 'react-native';
 
 export default class FlatListPage extends Component {
   constructor(porps) {
     super(porps);
+    this.state = {
+      hasMore: true,
+      footText: '正在加载',
+      data: []
+    }
   }
 
   static navigationOptions = {
@@ -35,13 +41,29 @@ export default class FlatListPage extends Component {
   }
 
   footer = () => {
-    return <Text style={{ flex: 1, height: 60, backgroundColor: '#ddd', textAlign: 'center' }}>这是尾部，滑动到最后一个item会加载更多</Text>;
+    return (
+      this.state.hasMore ?
+        (
+          <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', backgroundColor: '#ddd', height: 60 }}>
+            <ActivityIndicator
+              animating={this.state.animating}
+              size='small'
+            />
+            <Text>正在加载</Text>
+          </View>
+        )
+        :
+        (
+          <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', backgroundColor: '#ddd', height: 60 }}>
+            <Text>加载完毕</Text>
+          </View>
+        )
+    )
   }
 
   render() {
-    var data = [];
-    for (var i = 0; i < 40; i++) {
-      data.push({ key: i });
+    for (var i = 0; i < 20; i++) {
+      this.state.data.push({ key: i });
     }
 
     return (
@@ -51,20 +73,30 @@ export default class FlatListPage extends Component {
           ItemSeparatorComponent={this.separator}
           ListHeaderComponent={this.header}
           ListFooterComponent={this.footer}
-          data={data}
+          data={this.state.data}
 
           //滑动到（1 / data.length）的位置会触发 onEndReached 方法
-          onEndReachedThreshold={1 / data.length}
+          onEndReachedThreshold={1 / this.state.data.length}
           onEndReached={(info) => {
-            Alert.alert('nothing to loadmore')
+            var lastCount = this.state.data.length
+            if (lastCount < 60) {
+              for (var i = 0; i < 20; i++) {
+                this.state.data.push({ key: i + lastCount });
+              }
+            } else {
+              this.state.hasMore = false
+            }
           }}
 
           refreshing={false}
           onRefresh={() => {
-            Alert.alert('nothing to refresh')
+            this.state.data.length = 0
+            for (var i = 0; i < 20; i++) {
+              this.state.data.push({ key: i });
+            }
+            this.state.hasMore = true
           }}
-        >
-        </FlatList>
+        />
       </View>
     );
   }

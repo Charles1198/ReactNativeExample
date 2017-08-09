@@ -32,13 +32,13 @@ class RNApp extends Component {
           <Button style={styles.button} onPress={() => navigate('Login')} title='去登录' />
         </View>
         <View style={{ margin: 5 }}>
-          <Button style={styles.button} onPress={() => navigate('FlexBoxPage')} title='FlexBox' />
+          <Button style={styles.button} onPress={() => navigate('FlexBoxPage')} title='布局与样式' />
         </View>
         <View style={{ margin: 5 }}>
-          <Button style={styles.button} onPress={() => navigate('TabPage')} title='Tab' />
+          <Button style={styles.button} onPress={() => navigate('TabPage')} title='Tab切换页面' />
         </View>
         <View style={{ margin: 5 }}>
-          <Button style={styles.button} onPress={() => navigate('CameraPage', { isBack: true })} title='Camera' />
+          <Button style={styles.button} onPress={() => navigate('CameraPage')} title='相机' />
         </View>
         <View style={{ margin: 5 }}>
           <Button style={styles.button} onPress={() => navigate('FlatListPage')} title='FlatList' />
@@ -47,16 +47,16 @@ class RNApp extends Component {
           <Button style={styles.button} onPress={() => navigate('FlatListWebViewPage')} title='FlatList + WebView' />
         </View>
         <View style={{ margin: 5 }}>
-          <Button style={styles.button} onPress={() => navigate('Animation')} title='Animation' />
+          <Button style={styles.button} onPress={() => navigate('Animation')} title='动画' />
         </View>
         <View style={{ margin: 5 }}>
-          <Button style={styles.button} onPress={() => navigate('AsyncStoragePage')} title='AsyncStorage' />
+          <Button style={styles.button} onPress={() => navigate('AsyncStoragePage')} title='数据持久化' />
         </View>
         <View style={{ margin: 5 }}>
-          <Button style={styles.button} onPress={() => navigate('RealmPage')} title='Realm' />
+          <Button style={styles.button} onPress={() => navigate('RealmPage')} title='Realm数据库' />
         </View>
         <View style={{ margin: 5 }}>
-          <Button style={styles.button} onPress={() => navigate('PickImagePage')} title='PickImage' />
+          <Button style={styles.button} onPress={() => navigate('PickImagePage')} title='选择图片' />
         </View>
       </View>
     );
