@@ -44,13 +44,13 @@ export default class FlatListPage extends Component {
     return (
       this.state.hasMore ?
         (
-          <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', backgroundColor: '#ddd', height: 60 }}>
-            <ActivityIndicator
-              animating={this.state.animating}
-              size='small'
-            />
-            <Text>正在加载</Text>
-          </View>
+        <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', backgroundColor: '#ddd', height: 60 }}>
+          <ActivityIndicator
+            animating={this.state.animating}
+            size='small'
+          />
+          <Text>正在加载</Text>
+        </View>
         )
         :
         (

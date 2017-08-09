@@ -17,6 +17,7 @@ import AsyncStoragePage from './AsyncStoragePage'
 import RealmPage from './RealmPage'
 import PickImagePage from './PickImagePage'
 import FlexBoxPage from './FlexBoxPage'
+import SectionListPage from './SectionListPage'
 
 class RNApp extends Component {
   static navigationOptions = {
@@ -42,6 +43,9 @@ class RNApp extends Component {
         </View>
         <View style={{ margin: 5 }}>
           <Button style={styles.button} onPress={() => navigate('FlatListPage')} title='FlatList' />
+        </View>
+        <View style={{ margin: 5 }}>
+          <Button style={styles.button} onPress={() => navigate('SectionListPage')} title='SectionList' />
         </View>
         <View style={{ margin: 5 }}>
           <Button style={styles.button} onPress={() => navigate('FlatListWebViewPage')} title='FlatList + WebView' />
@@ -86,7 +90,8 @@ const MyApp = StackNavigator({
   AsyncStoragePage: { screen: AsyncStoragePage },
   RealmPage: { screen: RealmPage },
   PickImagePage: { screen: PickImagePage },
-  FlexBoxPage: { screen: FlexBoxPage }
+  FlexBoxPage: { screen: FlexBoxPage },
+  SectionListPage: { screen: SectionListPage }
 });
 
 export default MyApp;
